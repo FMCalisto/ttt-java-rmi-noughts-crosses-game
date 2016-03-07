@@ -1,11 +1,9 @@
 package ttt;
 
-import javax.jws.WebService;
-import java.rmi.*;
-import java.rmi.server.UnicastRemoteObject;
+import java.rmi.RemoteException;
 import java.util.Vector;
 
-public class TTT extends UnicastRemoteObject implements TTTService {
+public class TTT implements TTTRemote{
 	char board[][] = {
 		  {'1','2','3'},          /* Initial values are reference numbers */
 		  {'4','5','6'},          /* used to select a vacant square for   */
@@ -14,10 +12,8 @@ public class TTT extends UnicastRemoteObject implements TTTService {
 	int nextPlayer = 0;
 	int numPlays = 0;
 	
-	private Vector tttList;
-	private int version;
-
-    public String currentBoard() {
+	@Override
+	public String currentBoard() {
     	String s = "\n\n " + 
     				board[0][0]+" | " +
     				board[0][1]+" | " +
@@ -33,6 +29,7 @@ public class TTT extends UnicastRemoteObject implements TTTService {
     	return s;
     }
 
+	@Override
     public boolean play(int row, int column, int player) {
 		if (!(row >=0 && row <3 && column >= 0 && column < 3))
 			return false;
@@ -50,6 +47,7 @@ public class TTT extends UnicastRemoteObject implements TTTService {
 		return true;	
     }
 
+	@Override
     public int checkWinner() {
     	  int i;
     	  /* Check for a winning line - diagonals first */     
@@ -82,38 +80,24 @@ public class TTT extends UnicastRemoteObject implements TTTService {
     	  	else
     	  		return -1; /* Game is not over yet */
 	}
-    
-    public TTTService() throws RemoteException {
-    	tttList = new Vector();
-    	version = 0;
-    }
-    
-    public TTT newTTT(Graphical g) throws RemoteException {
-    	version++;
-    	TTT ttt = new TTTService(g, version);
-    	tttList.addElement(ttt);
-    	return ttt;
-    }
-    
-    public Vector allTTT() throws RemoteException {
-    	return tttList;
-    }
-    
-    public int getVersion() throws RemoteException {
-    	return version;
-    }
 
-}
+	@Override
+	public TTT newTTT() throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
-@WebService
-public interface TTTService extends Remote {
-	
-	TTT newTTT(GraphicalObject g) throws RemoteException;	
-	//Vector allShapes() throws RemoteException;
-	int getVersion() throws RemoteException;
-	
-    //String currentBoard();
-    //boolean play(int row, int column, int player);
-    //boolean playRandom(int player);
-    //int checkWinner();
+	@SuppressWarnings("rawtypes")
+	@Override
+	public Vector allTTT() throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int getVersion() throws RemoteException {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }
