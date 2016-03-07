@@ -8,8 +8,10 @@ Based on the examples, was built a new Java RMI Tic Tac Toe (noughts and crosses
 
 ===================================================
 
-Distributed Systems Group 35
+Distributed Systems
 -------------------
+
+#### Group 35
 
 Daniel da Costa
 
