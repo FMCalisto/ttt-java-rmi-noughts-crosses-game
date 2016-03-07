@@ -1,6 +1,11 @@
 package ttt;
 
-public class TTT {
+import javax.jws.WebService;
+import java.rmi.*;
+import java.rmi.server.UnicastRemoteObject;
+import java.util.Vector;
+
+public class TTT extends UnicastRemoteObject implements TTTService {
 	char board[][] = {
 		  {'1','2','3'},          /* Initial values are reference numbers */
 		  {'4','5','6'},          /* used to select a vacant square for   */
@@ -8,6 +13,9 @@ public class TTT {
 		};
 	int nextPlayer = 0;
 	int numPlays = 0;
+	
+	private Vector tttList;
+	private int version;
 
     public String currentBoard() {
     	String s = "\n\n " + 
@@ -74,5 +82,38 @@ public class TTT {
     	  	else
     	  		return -1; /* Game is not over yet */
 	}
+    
+    public TTTService() throws RemoteException {
+    	tttList = new Vector();
+    	version = 0;
+    }
+    
+    public TTT newTTT(Graphical g) throws RemoteException {
+    	version++;
+    	TTT ttt = new TTTService(g, version);
+    	tttList.addElement(ttt);
+    	return ttt;
+    }
+    
+    public Vector allTTT() throws RemoteException {
+    	return tttList;
+    }
+    
+    public int getVersion() throws RemoteException {
+    	return version;
+    }
 
+}
+
+@WebService
+public interface TTTService extends Remote {
+	
+	TTT newTTT(GraphicalObject g) throws RemoteException;	
+	//Vector allShapes() throws RemoteException;
+	int getVersion() throws RemoteException;
+	
+    //String currentBoard();
+    //boolean play(int row, int column, int player);
+    //boolean playRandom(int player);
+    //int checkWinner();
 }
