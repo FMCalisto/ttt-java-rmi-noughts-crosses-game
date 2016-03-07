@@ -53,9 +53,9 @@ public class Game {
 					winner);
 	}
 
-	public static void main(String[] args) {
-		Game g = new Game();
-		g.playGame();
-		g.congratulate();
-	}
+//	public static void main(String[] args) {
+//		Game g = new Game();
+//		g.playGame();
+//		g.congratulate();
+//	}
 }
