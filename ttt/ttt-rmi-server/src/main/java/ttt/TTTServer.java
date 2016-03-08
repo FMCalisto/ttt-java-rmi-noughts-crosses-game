@@ -1,6 +1,5 @@
 package ttt;
 
-import java.rmi.Remote;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 
@@ -8,15 +7,20 @@ public class TTTServer {
 	public static void main(String args[]) {
 		int registryPort = 8080;
 		
-		System.out.println("Main ok");
+		System.out.println("Main OK");
 		
 		try {
-			TTTServer aTTT = new TTTServer();
+			TTT aTTT = new TTT();
 			
 			System.out.println("After create");
 			
 			Registry reg = LocateRegistry.createRegistry(registryPort);
-			reg.rebind("TTT", (Remote) aTTT);
+			
+			System.out.println("Local Registry OK");
+			
+			reg.rebind("TTT", aTTT);
+			
+			System.out.println("Rebind OK");
 			
 			System.out.println("TTT server ready");
 			
