@@ -5,6 +5,7 @@ import java.util.Vector;
 
 public interface TTTRemote extends Remote{
 	
+	// TODO Auto-generated method stub
 	TTT newTTT() throws RemoteException;
 	@SuppressWarnings("rawtypes")
 	Vector allTTT() throws RemoteException;
@@ -12,5 +13,4 @@ public interface TTTRemote extends Remote{
 	int checkWinner();
 	boolean play(int row, int column, int player);
 	String currentBoard() throws RemoteException;
-
 }
