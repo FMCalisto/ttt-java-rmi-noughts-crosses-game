@@ -17,7 +17,7 @@ public class TTTClient {
 		boolean restart;
 		
 		try {
-			TTTService game = Naming.lookup("//localhost:/TTT");
+			TTTService game = Naming.lookup("//localhost:8080/TTT");
 		}
 	}
 

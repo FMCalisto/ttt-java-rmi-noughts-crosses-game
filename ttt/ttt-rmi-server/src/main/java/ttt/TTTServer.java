@@ -1,17 +1,13 @@
 package ttt;
 
 import java.io.IOException;
-import java.net.ServerSocket;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 
 public class TTTServer {
 	public static void main(String args[]) throws IOException {
 		
-		@SuppressWarnings("resource")
-		ServerSocket s = new ServerSocket(0);		
-		int registryPort = s.getLocalPort();
-		System.out.println("listening on port: " + s.getLocalPort());
+		int registryPort = 8080;
 		
 		System.out.println("Main OK");
 		
