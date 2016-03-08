@@ -11,6 +11,6 @@ public interface TTTRemote extends Remote{
 	int getVersion() throws RemoteException;
 	int checkWinner();
 	boolean play(int row, int column, int player);
-	String currentBoard();
+	String currentBoard() throws RemoteException;
 
 }
