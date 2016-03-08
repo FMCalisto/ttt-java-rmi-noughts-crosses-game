@@ -59,3 +59,19 @@ public class TTTService extends UnicastRemoteObject implements TTTRemote {
 		return null;
 	}
 }
+
+//package ttt;
+//
+//import java.rmi.*;
+//
+//public interface TTTService extends Remote {
+//	String currentBoard() throws RemoteException;
+//
+//	boolean play(int row, int column, int player) throws RemoteException;
+//
+//	int checkWinner() throws RemoteException;
+//	
+//	void restart() throws RemoteException;
+//	
+//	int lastPlay(int player) throws RemoteException;
+//}
