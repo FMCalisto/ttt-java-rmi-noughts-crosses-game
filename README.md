@@ -1,5 +1,7 @@
 # Tic Tac Toe Java RMI Noughts and Crosses Game
 
+[<<< DSLabs](https://github.com/FMCalisto/DSLabs)
+
 <img src="assets/2000px-Tic_tac_toe.png" alt="Tic Tac Toe" align="center" width="50%"/>
 
 ## Preface
