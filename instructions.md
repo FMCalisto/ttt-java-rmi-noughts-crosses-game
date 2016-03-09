@@ -4,7 +4,7 @@ the game, so that it can be remotely manipulated by a client, even if the `TTT` 
 and the concrete object are found only on the server side.
 
 For this, the `TTTServer` when it is released, instantiates a concrete `ttt` object and register it in the
-Java Names directory, in our case, the port `8080` of localhost.
+Java Names directory, in our case, the [port](https://github.com/FMCalisto/ttt-java-rmi-noughts-crosses-game/blob/master/ttt/ttt-rmi-server/src/main/java/ttt/TTTServer.java#L10) `8080` of localhost.
 
 After that the `TTTClient` progam (which implements the previously found logic 
 Game in this class on the server side) tries to read the directory name, a remote object
