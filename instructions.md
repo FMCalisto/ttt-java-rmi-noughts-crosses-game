@@ -11,7 +11,7 @@ Game in this class on the server side) tries to read the directory name, a remot
 that responds to the signature present in `TTTService` interface, thus that generating a proxy,
 allows you to interact with the object without knowing its implementation.
 
-For the evaluation exercise of the solution method to the remote interface, was added a method
+For the evaluation exercise of the solution method to the remote interface, was added a [method](https://github.com/FMCalisto/ttt-java-rmi-noughts-crosses-game/blob/master/ttt/ttt-rmi-server/src/main/java/ttt/TTT.java#L107)
 `int lastPlay(int player)`, implemented in the `TTT` concrete class as a function that, getting 
 the player returns the last move made by him (for each of the players 2) or returning
 `-1` if no move has been made by the respective player.
