@@ -9,6 +9,12 @@ public class Game {
 	int winner = 0;
 	int player = 1;
 
+	public static void main(String[] args){
+		Game g = new Game();
+		g.playGame();
+		g.congratulate();
+	}
+
 	public Game() {
 		try {
 		ttt = new TTT();
@@ -58,4 +64,6 @@ public class Game {
 					"\nCongratulations, player %d, YOU ARE THE WINNER!\n",
 					winner);
 	}
+
+
 }
