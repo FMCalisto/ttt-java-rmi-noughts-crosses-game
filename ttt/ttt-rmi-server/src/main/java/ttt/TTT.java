@@ -8,6 +8,31 @@ import java.util.LinkedList;
 
 
 public class TTT extends UnicastRemoteObject implements TTTService {
+
+    
+
+    private LinkedList<TTT.play> Plays = new LinkedList<TTT.play>();
+
+    private static final long serialVersionUID = 1L;
+    
+    protected TTT() throws RemoteException{
+        //TODO
+    }
+    
+    private char board[][] = {
+          {'1','2','3'},          /* Initial values are reference numbers */
+          {'4','5','6'},          /* used to select a vacant square for   */
+          {'7','8','9'}           /* a turn.                              */
+        };
+
+    private char boardRestart[][] = {
+                  {'1','2','3'},          /* Initial values are reference numbers */
+                  {'4','5','6'},          /* used to select a vacant square for   */
+                  {'7','8','9'}           /* a turn.                              */
+                };
+    
+    private int nextPlayer = 0;
+    private int numPlays = 0;
 	
     public class play {
         public int row;
@@ -30,29 +55,6 @@ public class TTT extends UnicastRemoteObject implements TTTService {
             return player;
         }
     }
-
-    private LinkedList<TTT.play> Plays = new LinkedList<TTT.play>();
-
-	private static final long serialVersionUID = 1L;
-	
-	protected TTT() throws RemoteException{
-		//TODO
-	}
-	
-	private char board[][] = {
-		  {'1','2','3'},          /* Initial values are reference numbers */
-		  {'4','5','6'},          /* used to select a vacant square for   */
-		  {'7','8','9'}           /* a turn.                              */
-		};
-
-    private char boardRestart[][] = {
-                  {'1','2','3'},          /* Initial values are reference numbers */
-                  {'4','5','6'},          /* used to select a vacant square for   */
-                  {'7','8','9'}           /* a turn.                              */
-                };
-	
-	private int nextPlayer = 0;
-	private int numPlays = 0;
 	
 	public String currentBoard() {
     	String s = "\n\n " + 
