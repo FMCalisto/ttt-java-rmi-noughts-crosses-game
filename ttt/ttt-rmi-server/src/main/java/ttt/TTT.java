@@ -20,9 +20,6 @@ public class TTT extends UnicastRemoteObject implements TTTService {
             player = _player;
         }
 
-        public void pila(){
-            System.out.println(row);
-        }
         public int getRow(){
             return row;
         }
@@ -128,7 +125,7 @@ public class TTT extends UnicastRemoteObject implements TTTService {
 				};
 		
 		board = boardRestart;
-		nextPlayer = 0; //FIX
+		nextPlayer = 0;
 		numPlays = 0;		
 	}
 	
