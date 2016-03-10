@@ -31,7 +31,7 @@ public class TTT extends UnicastRemoteObject implements TTTService {
         }
     }
 
-    LinkedList<TTT.play> Plays = new LinkedList<TTT.play>();
+    private LinkedList<TTT.play> Plays = new LinkedList<TTT.play>();
 
 	private static final long serialVersionUID = 1L;
 	
@@ -39,14 +39,20 @@ public class TTT extends UnicastRemoteObject implements TTTService {
 		//TODO
 	}
 	
-	char board[][] = {
+	private char board[][] = {
 		  {'1','2','3'},          /* Initial values are reference numbers */
 		  {'4','5','6'},          /* used to select a vacant square for   */
 		  {'7','8','9'}           /* a turn.                              */
 		};
+
+    private char boardRestart[][] = {
+                  {'1','2','3'},          /* Initial values are reference numbers */
+                  {'4','5','6'},          /* used to select a vacant square for   */
+                  {'7','8','9'}           /* a turn.                              */
+                };
 	
-	int nextPlayer = 0;
-	int numPlays = 0;
+	private int nextPlayer = 0;
+	private int numPlays = 0;
 	
 	public String currentBoard() {
     	String s = "\n\n " + 
@@ -117,13 +123,7 @@ public class TTT extends UnicastRemoteObject implements TTTService {
     	  		return -1; /* Game is not over yet */
 	}
 	
-	public void restart() {
-		char boardRestart[][] = {
-				  {'1','2','3'},          /* Initial values are reference numbers */
-				  {'4','5','6'},          /* used to select a vacant square for   */
-				  {'7','8','9'}           /* a turn.                              */
-				};
-		
+	public void restart() {		
 		board = boardRestart;
 		nextPlayer = 0;
 		numPlays = 0;		
