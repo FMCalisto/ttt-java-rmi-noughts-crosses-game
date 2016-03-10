@@ -2,13 +2,41 @@ package ttt;
 
 import java.rmi.*;
 import java.rmi.server.UnicastRemoteObject;
+import java.util.*;
+import java.util.LinkedList;
+
+
 
 public class TTT extends UnicastRemoteObject implements TTTService {
 	
+    public class jogada {
+        public int row;
+        public int column;
+        public int player;
+
+        public jogada(int _row, int _column, int _player){
+            row = _row;
+            column = _column;
+            player = _player;
+        }
+
+        public void pila(){
+            System.out.println(row);
+        }
+        public int getRow(){
+            return row;
+        }
+        public int getColumn(){
+            return column;
+        }
+        public int getPlayer(){
+            return player;
+        }
+    }
+
+    LinkedList<TTT.jogada> Jogadas = new LinkedList<TTT.jogada>();
+
 	private static final long serialVersionUID = 1L;
-	
-	private int _lastMovePlayer1 = -1;
-	private int _lastMovePlayer2 = -1;	
 	
 	protected TTT() throws RemoteException{
 		//TODO
@@ -49,6 +77,9 @@ public class TTT extends UnicastRemoteObject implements TTTService {
 
 		if (numPlays == 9) 
 			return false;
+
+
+        Jogadas.add(new TTT.jogada(row, column, player));
 
 		board[row][column] = (player == 1) ? 'X' : 'O';        /* Insert player symbol   */
 		nextPlayer = (nextPlayer + 1) % 2;
@@ -98,18 +129,23 @@ public class TTT extends UnicastRemoteObject implements TTTService {
 		
 		board = boardRestart;
 		nextPlayer = 0; //FIX
-		numPlays = 0;
-		_lastMovePlayer1 = 0;
-		_lastMovePlayer2 = 0;
-		
+		numPlays = 0;		
 	}
 	
-	public int lastPlay(int player) {
-		if(player == 1) {
-			return _lastMovePlayer1;
-		} else {
-			return _lastMovePlayer2;
-		}
-	}
 
+    public void removeLastPlay(){
+        int _column, _row;
+
+        for(int k=2; k>0; k--){
+            if(Jogadas.size() > 0){
+                _row = Jogadas.getLast().getRow();
+                _column = Jogadas.getLast().getColumn();
+
+                board[_row][_column] = (char) (48 + (( (3*_row) + (1+_column))));
+
+                numPlays--;
+                Jogadas.removeLast();
+            }
+        }
+    }
 }
