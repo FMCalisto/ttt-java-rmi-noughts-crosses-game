@@ -9,7 +9,7 @@ Parameter conversion is done by *marshaling*/*unmarshaling* of remote objects an
 
 *Client classes:*
 
-* `TTTClient.java` implementing game logic, with calls to the remote object methods registered in the directory names,
+* `Game.java` implementing game logic, with calls to the remote object methods registered in the directory names,
 accessed via proxy (`TTTService`);
 
 *Server classes:*
