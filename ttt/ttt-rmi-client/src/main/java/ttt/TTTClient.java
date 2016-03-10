@@ -19,4 +19,3 @@ public class TTTClient {
 	    }catch(Exception e) {System.out.println("[Exception]:" + e.getMessage());}
     }
 }
-

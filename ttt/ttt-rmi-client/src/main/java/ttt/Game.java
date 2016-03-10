@@ -4,10 +4,10 @@ import java.util.Scanner;
 import java.rmi.RemoteException;
 
 public class Game {
-	TTTService ttt;
-	Scanner keyboardSc;
-	int winner = 0;
-	int player = 1;
+	private TTTService ttt;
+	private Scanner keyboardSc;
+	private int winner = 0;
+	private int player = 1;
 
 	public Game(TTTService _ttt) throws RemoteException {
 			ttt = _ttt;

@@ -9,12 +9,12 @@ import java.util.LinkedList;
 
 public class TTT extends UnicastRemoteObject implements TTTService {
 	
-    public class jogada {
+    public class play {
         public int row;
         public int column;
         public int player;
 
-        public jogada(int _row, int _column, int _player){
+        public play(int _row, int _column, int _player){
             row = _row;
             column = _column;
             player = _player;
@@ -31,7 +31,7 @@ public class TTT extends UnicastRemoteObject implements TTTService {
         }
     }
 
-    LinkedList<TTT.jogada> Jogadas = new LinkedList<TTT.jogada>();
+    LinkedList<TTT.play> Plays = new LinkedList<TTT.play>();
 
 	private static final long serialVersionUID = 1L;
 	
@@ -76,7 +76,7 @@ public class TTT extends UnicastRemoteObject implements TTTService {
 			return false;
 
 
-        Jogadas.add(new TTT.jogada(row, column, player));
+        Plays.add(new TTT.play(row, column, player));
 
 		board[row][column] = (player == 1) ? 'X' : 'O';        /* Insert player symbol   */
 		nextPlayer = (nextPlayer + 1) % 2;
@@ -134,14 +134,14 @@ public class TTT extends UnicastRemoteObject implements TTTService {
         int _column, _row;
 
         for(int k=2; k>0; k--){
-            if(Jogadas.size() > 0){
-                _row = Jogadas.getLast().getRow();
-                _column = Jogadas.getLast().getColumn();
+            if(Plays.size() > 0){
+                _row = Plays.getLast().getRow();
+                _column = Plays.getLast().getColumn();
 
                 board[_row][_column] = (char) (48 + (( (3*_row) + (1+_column))));
 
                 numPlays--;
-                Jogadas.removeLast();
+                Plays.removeLast();
             }
         }
     }
