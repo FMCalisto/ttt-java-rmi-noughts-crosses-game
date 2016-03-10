@@ -4,10 +4,10 @@ import java.util.Scanner;
 import java.rmi.RemoteException;
 
 public class Game {
-	TTT ttt;
-	Scanner keyboardSc;
-	int winner = 0;
-	int player = 1;
+	private TTT ttt;
+	private Scanner keyboardSc;
+	private int winner = 0;
+	private int player = 1;
 
 	public static void main(String[] args){
 		Game g = new Game();
@@ -18,7 +18,6 @@ public class Game {
 	public Game() {
 		try {
 		ttt = new TTT();
-		//keyboardSc = new Scanner(System.in);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}	
